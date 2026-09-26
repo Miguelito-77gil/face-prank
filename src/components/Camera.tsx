@@ -58,6 +58,7 @@ function Camera() {
 
     const interval = window.setInterval(() => {
       const elapsed = Date.now() - startTime;
+
       const currentProgress = Math.min(
         Math.round((elapsed / duration) * 100),
         100,
@@ -141,12 +142,13 @@ function Camera() {
    */
   return (
     <main className="relative min-h-screen overflow-hidden bg-black">
+      {/* Front camera — mirrored like a selfie camera */}
       <video
         ref={videoRef}
         autoPlay
         playsInline
         muted
-        className="h-screen w-full object-cover"
+        className="h-screen w-full -scale-x-100 object-cover"
       />
 
       {/* Dark overlay */}

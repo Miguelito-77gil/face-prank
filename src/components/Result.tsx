@@ -6,8 +6,15 @@ type ResultProps = {
 
 function Result({ onScanAgain }: ResultProps) {
   const [showResult, setShowResult] = useState(false);
+  const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
+    // Generate a fictional random score from 90% to 99%.
+    const randomPercentage =
+      Math.floor(Math.random() * 10) + 90;
+
+    setPercentage(randomPercentage);
+
     const timer = window.setTimeout(() => {
       setShowResult(true);
     }, 500);
@@ -41,20 +48,31 @@ function Result({ onScanAgain }: ResultProps) {
           🌈
         </div>
 
-        {/* Result */}
+        {/* Result label */}
         <p className="text-xs uppercase tracking-[0.4em] text-white/40">
           Scanner Result
         </p>
 
-        <h1 className="mt-3 text-7xl font-black tracking-tight">
-          GAY
-        </h1>
+        {/* Random percentage */}
+        <div className="mt-3 flex items-end justify-center">
+          <h1 className="text-8xl font-black tracking-tight">
+            {percentage}
+          </h1>
+
+          <span className="mb-3 ml-1 text-4xl font-black text-white/70">
+            %
+          </span>
+        </div>
+
+        <p className="mt-2 text-sm font-bold uppercase tracking-[0.35em] text-white/50">
+          GAY SCORE
+        </p>
 
         <div className="mx-auto mt-6 h-px w-32 bg-white/20" />
 
+        {/* Disclaimer */}
         <p className="mx-auto mt-6 max-w-sm text-sm leading-6 text-white/50">
-          Just a fictional prank result. This is a game and does
-          not determine anyone's actual sexuality.
+          You're Gay HAHAHAHA!
         </p>
 
         {/* Scan again */}
